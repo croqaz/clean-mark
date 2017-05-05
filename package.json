@@ -1,0 +1,20 @@
+{
+  "author": "Cristi Constantin",
+  "dependencies": {
+    "breakdance": "2.x",
+    "html-minifier": "3.x",
+    "metascraper": "1.x",
+    "node-fetch": "1.x",
+    "sanitize-html": "1.x"
+  },
+  "description": "Convert an article into a clean Markdown",
+  "keywords": [
+    "clearly",
+    "readability",
+    "markdown"
+  ],
+  "license": "MIT",
+  "main": "cli.js",
+  "name": "clean-mark",
+  "version": "0.1.0"
+}
