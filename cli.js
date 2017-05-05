@@ -1,48 +1,60 @@
 
 const fs = require('fs')
+const url = require('url')
 const fetch = require('node-fetch')
 const sanitize = require('sanitize-html')
 const { minify } = require('html-minifier')
 const metascraper = require('metascraper')
 const breakdance = require('breakdance')
 
-const url = process.argv[2]
+const link = process.argv[2]
 
-if (!url) {
-  console.warn('Plz gimme url')
+if (!link) {
+  console.warn(':<  Plz gimme URL')
   process.exit()
 }
 
-console.log('☟  dis ...')
+let out = url.parse(link).path
+out = out.split('/').pop()
+out = out.split('.htm')[0]
 
-fetch(url)
+console.log('☟  see dis ...')
+
+fetch(link)
   .then(res => res.text())
   .then(html => {
-    console.log('Sanitizing the page content...')
-    fs.writeFileSync('tmp1.htm', html)
-    const sane = sanitize(html)
-    console.log('Minifying the HTML...')
-    fs.writeFileSync('tmp2.htm', sane)
+    const sane = saneHtml(html)
     const mini = minHtml(sane)
-    console.log('Converting to markdown...')
-    fs.writeFileSync('tmp3.htm', mini)
-    const mark = breakdance(mini)
-      .replace(/\<br>\n/g, '\n')
-      .replace(/(\S[\.\!\?])(\n)([ ]|\S)/g, '$1\n\n$3')
-      .replace(/\n\n+/g, '\n\n')
+    const mark = convertMd(mini)
+    console.log('Scraping page meta-data...')
     metascraper.scrapeHtml(html)
       .then(meta => {
-        console.log('Scraping page meta-data...')
-        fs.writeFileSync('content.md', template(meta, mark))
+        fs.writeFileSync(out + '.md', template(meta, mark))
         console.log('☞  baaam!')
       })
+      .catch(err => {
+        console.error('Error scraping article:', err)
+      })
   })
-  .catch(function(err) {
-    console.error('Error converting artice:', err)
+  .catch(err => {
+    console.error('Error converting article:', err)
   })
 
+function saneHtml (html) {
+  // fs.writeFileSync('tmp1.htm', html)
+  console.log('Sanitizing the page content...')
+  const r = sanitize(html, {
+    nonTextTags: [ 'style', 'script', 'textarea', 'noscript', 'div' ],
+    allowedTags: [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'p', 'a', 'ul', 'ol',
+      'nl', 'li', 'b', 'i', 'strong', 'em', 'strike', 'code', 'hr', 'br', 'div', 'pre', 'img' ]
+  })
+  // fs.writeFileSync('tmp2.htm', r)
+  return r
+}
+
 function minHtml (html) {
-  return minify(html, {
+  console.log('Minifying the HTML...')
+  const r = minify(html, {
     minifyJS: true,
     minifyCSS: true,
     sortClassName: true,
@@ -53,21 +65,25 @@ function minHtml (html) {
     preserveLineBreaks: false,
     removeOptionalTags: true,
     removeEmptyElements: true,
+    removeAttributeQuotes: true,
     removeEmptyAttributes: true,
     removeRedundantAttributes: true,
-    collapseBooleanAttributes: true
-  })
+    collapseBooleanAttributes: true,
+    collapseInlineTagWhitespace: true
+  }).replace(/(\<a .+?>\<img .+?>)(\<\/a>)/g, '$1;$2')
+  // fs.writeFileSync('tmp3.htm', r)
+  return r
+}
+
+function convertMd (html) {
+  console.log('Converting to markdown...')
+  const r = breakdance(html)
+    .replace(/\<br>\n/g, '\n')
+    .replace(/(\S[\.\!\?])(\n)([ ]|\S)/g, '$1\n\n$3')
+    .replace(/\n\n+/g, '\n\n')
+  return r
 }
 
 function template (meta, text) {
-return `---
-title: ${meta.title}
-description: ${meta.description}
-author: ${meta.author}
-date: ${meta.date}
-publisher: ${meta.publisher}
-link: ${meta.url}
----
-
-${text}`
+  return `---\ntitle: ${meta.title}\ndescription: ${meta.description}\nauthor: ${meta.author}\ndate: ${meta.date}\npublisher: ${meta.publisher}\nlink: ${meta.url}\n---\n${text}`
 }
