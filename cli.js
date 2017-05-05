@@ -13,13 +13,18 @@ if (!url) {
   process.exit()
 }
 
+console.log('☟  dis ...')
+
 fetch(url)
   .then(res => res.text())
   .then(html => {
+    console.log('Sanitizing the page content...')
     fs.writeFileSync('tmp1.htm', html)
     const sane = sanitize(html)
+    console.log('Minifying the HTML...')
     fs.writeFileSync('tmp2.htm', sane)
     const mini = minHtml(sane)
+    console.log('Converting to markdown...')
     fs.writeFileSync('tmp3.htm', mini)
     const mark = breakdance(mini)
       .replace(/\<br>\n/g, '\n')
@@ -27,7 +32,9 @@ fetch(url)
       .replace(/\n\n+/g, '\n\n')
     metascraper.scrapeHtml(html)
       .then(meta => {
+        console.log('Scraping page meta-data...')
         fs.writeFileSync('content.md', template(meta, mark))
+        console.log('☞  baaam!')
       })
   })
   .catch(function(err) {
