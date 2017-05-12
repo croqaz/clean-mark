@@ -4,10 +4,10 @@
   ],
   "dependencies": {
     "breakdance": "2.x",
-    "html-minifier": "3.x",
-    "metascraper": "1.x",
-    "node-fetch": "1.x",
-    "sanitize-html": "1.x"
+    "cheerio": "0.x",
+    "htmlparser2": "3.x",
+    "minimize": "2.x",
+    "node-fetch": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {},
