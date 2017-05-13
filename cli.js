@@ -8,13 +8,21 @@ const meta = require('./lib/meta')
 const read = require('./lib/read')
 const breakdance = require('breakdance')
 
-const link = process.argv[2]
+let agro = process.argv.indexOf('-agro')
+if (agro > -1) {
+  process.argv.splice(agro, 1)
+  agro = true
+}
+let link = process.argv[2]
 
 if (!link) {
   console.warn(':<  Plz gimme URL')
   process.exit()
 }
 
+if (link.endsWith('/')) {
+  link = link.substr(0, link.length-1)
+}
 let out = url.parse(link).path
 out = out.split('/').pop()
 out = out.split('.htm')[0]
@@ -55,8 +63,12 @@ function saneHtml (html) {
   const opts = {
     nonTextTags: [ 'style', 'script', 'textarea', 'noscript' ],
     allowedAttributes: { '*': [ 'href', 'src', 'id', 'class', 'title' ] },
-    allowedTags: [ 'a', 'b', 'blockquote', 'br', 'code', 'em', 'h1', 'h2', 'h3', 'h4',
-      'h5', 'h6', 'i', 'img', 'li', 'ol', 'p', 'pre', 'strike', 'strong', 'ul' ]
+    allowedTags: [ 'a', 'article', 'b', 'blockquote', 'br', 'cite', 'code',
+    'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'img', 'li', 'ol', 'p', 'pre',
+    'section', 'strike', 'strong', 'ul' ]
+  }
+  if (agro) {
+    opts.allowedTags.push('div')
   }
   let r = sanitize(html, opts)
   r = htmlTemplate(r)
@@ -89,5 +101,5 @@ function htmlTemplate (html) {
 }
 
 function mdTemplate (meta, text) {
-  return `---\ntitle: ${meta.title}\ndescription: ${meta.description}\nauthor: ${meta.author}\ndate: ${meta.date.replace('T', ' ')}\npublisher: ${meta.publisher}\nlink: ${meta.url}\n---\n${text}`
+  return `---\ntitle: ${meta.title}\ndescription: ${meta.description}\nauthor: ${meta.author}\ndate: ${meta.date}\npublisher: ${meta.publisher}\nlink: ${meta.url}\n---\n${text}`
 }
