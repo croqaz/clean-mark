@@ -10,7 +10,9 @@
     "node-fetch": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
-  "devDependencies": {},
+  "devDependencies": {
+    "standard": "10.x"
+  },
   "keywords": [
     "clearly",
     "readability",

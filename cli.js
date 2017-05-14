@@ -2,17 +2,13 @@
 const fs = require('fs')
 const url = require('url')
 const fetch = require('node-fetch')
+const cheerio = require('cheerio')
 const Minimize = require('minimize')
 const sanitize = require('./lib/sanitize')
 const meta = require('./lib/meta')
 const read = require('./lib/read')
 const breakdance = require('breakdance')
 
-let agro = process.argv.indexOf('-agro')
-if (agro > -1) {
-  process.argv.splice(agro, 1)
-  agro = true
-}
 let link = process.argv[2]
 
 if (!link) {
@@ -34,13 +30,14 @@ fetch(link)
   .then(html => {
     const sane = saneHtml(html)
     const mini = minHtml(sane)
-    read(mini, (err, article) => {
+
+    read(removeUnwanted(mini), (err, article) => {
       if (err) {
         console.error('Error on cleaning article:', err)
         return
       }
       // Article content
-      // fs.writeFileSync('test/' + out + '.htm', htmlTemplate(article.content))
+      // fs.writeFileSync('test/' + out + '.htm', article.content)
       // Markdown content
       const mark = convertMd(article.content)
       console.log('Scraping page meta-data...')
@@ -61,18 +58,17 @@ fetch(link)
 function saneHtml (html) {
   console.log('Sanitizing the page content...')
   const opts = {
-    nonTextTags: [ 'style', 'script', 'textarea', 'noscript' ],
-    allowedAttributes: { '*': [ 'href', 'src', 'id', 'class', 'title' ] },
-    allowedTags: [ 'a', 'article', 'b', 'blockquote', 'br', 'cite', 'code',
+    nonTextTags: [ 'aside', 'iframe', 'style', 'script', 'textarea', 'noscript' ],
+    allowedAttributes: {
+      '*': [ 'id', 'class', 'href', 'itemprop', 'src', 'title' ],
+      'meta': [ 'content', 'name', 'http-equiv', 'property' ]
+    },
+    allowedTags: [ 'a', 'article', 'b', 'blockquote', 'br', 'cite', 'code', 'div',
     'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'img', 'li', 'ol', 'p', 'pre',
-    'section', 'strike', 'strong', 'ul' ]
-  }
-  if (agro) {
-    opts.allowedTags.push('div')
+    'section', 'strike', 'strong', 'ul', 'html', 'head', 'body', 'meta', 'title' ]
   }
   let r = sanitize(html, opts)
-  r = htmlTemplate(r)
-  // fs.writeFileSync('test/tmp2.htm', r)
+  // fs.writeFileSync('test/tmp1.htm', r)
   return r
 }
 
@@ -81,9 +77,18 @@ function minHtml (html) {
   let r = new Minimize({ quotes: true })
     .parse(html)
     .replace(/(<a .+?><img .+?>)(<\/a>)/g, '$1;$2')
-  r = htmlTemplate(r)
-  // fs.writeFileSync('test/tmp3.htm', r)
+  // fs.writeFileSync('test/tmp2.htm', r)
   return r
+}
+
+function removeUnwanted (html) {
+  const $ = cheerio.load(html, { normalizeWhitespace: true })
+  const comms = $('#comments')
+  if (comms[0].attribs.class === 'comments') {
+    comms.remove()
+  }
+  $('.share-button').remove()
+  return $.html()
 }
 
 function convertMd (html) {
@@ -94,10 +99,6 @@ function convertMd (html) {
     .replace(/(\S[.!?])(\n)([ ]|\S)/g, '$1\n\n$3')
     .replace(/\n\n+/g, '\n\n')
   return r
-}
-
-function htmlTemplate (html) {
-  return `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>${html}</body></html>`
 }
 
 function mdTemplate (meta, text) {
