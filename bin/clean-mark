@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+const fs = require('fs')
+const url = require('url')
+const c = require('../')
+
+let link = process.argv[2]
+
+if (!link) {
+  console.warn(':<  Plz gimme URL')
+  process.exit()
+}
+
+if (link.endsWith('/')) {
+  link = link.substr(0, link.length - 1)
+}
+
+let out = url.parse(link).path
+out = out.split('/').pop()
+out = out.split('.htm')[0]
+
+c.clean(link, out, (err, mark) => {
+  if (err) return
+  fs.writeFileSync(out + '.md', mark)
+})

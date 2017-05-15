@@ -2,10 +2,15 @@
   "authors": [
     "Cristi Constantin <cristi.constantin@live.com>"
   ],
+  "bin": {
+    "clean-mark": "./bin/clean-mark"
+  },
   "dependencies": {
     "breakdance": "2.x",
     "cheerio": "0.x",
+    "chrono-node": "1.x",
     "htmlparser2": "3.x",
+    "micro": "7.x",
     "minimize": "2.x",
     "node-fetch": "1.x"
   },
@@ -13,13 +18,16 @@
   "devDependencies": {
     "standard": "10.x"
   },
+  "engines": {
+    "node": ">=7.10.0"
+  },
   "keywords": [
     "clearly",
     "readability",
     "markdown"
   ],
   "license": "MIT",
-  "main": "cli.js",
+  "main": "lib/clean.js",
   "name": "clean-mark",
   "version": "0.1.0"
 }
