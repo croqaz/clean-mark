@@ -63,9 +63,10 @@ function saneHtml (html) {
       '*': [ 'id', 'class', 'href', 'itemprop', 'src', 'title' ],
       'meta': [ 'content', 'name', 'http-equiv', 'property' ]
     },
-    allowedTags: [ 'a', 'article', 'b', 'blockquote', 'br', 'cite', 'code', 'div',
-    'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'img', 'li', 'ol', 'p', 'pre',
-    'section', 'strike', 'strong', 'ul', 'html', 'head', 'body', 'meta', 'title' ]
+    allowedTags: [ 'a', 'article', 'b', 'blockquote', 'body', 'br', 'cite',
+      'code', 'div', 'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'html',
+      'i', 'img', 'li', 'meta', 'ol', 'p', 'pre', 'section', 'strike', 'strong',
+      'title', 'ul' ]
   }
   let r = sanitize(html, opts)
   // fs.writeFileSync('test/tmp1.htm', r)
@@ -83,10 +84,14 @@ function minHtml (html) {
 
 function removeUnwanted (html) {
   const $ = cheerio.load(html, { normalizeWhitespace: true })
-  const comms = $('#comments')
-  if (comms[0].attribs.class === 'comments') {
-    comms.remove()
-  }
+  $('#comments').remove()
+  $('#respond').remove()
+  $('#lower').remove()
+  $('#header').remove()
+  $('#header-wrapper').remove()
+  $('#footer').remove()
+  $('#sidebar').remove()
+  $('#sidebar-wrapper').remove()
   $('.share-button').remove()
   return $.html()
 }
@@ -102,5 +107,5 @@ function convertMd (html) {
 }
 
 function mdTemplate (meta, text) {
-  return `---\ntitle: ${meta.title}\ndescription: ${meta.description}\nauthor: ${meta.author}\ndate: ${meta.date}\npublisher: ${meta.publisher}\nlink: ${meta.url}\n---\n${text}`
+  return `---\ntitle: ${meta.title}\nauthor: ${meta.author}\ndate: ${meta.date}\npublisher: ${meta.publisher}\nlink: ${meta.url}\n---\n${text}`
 }
