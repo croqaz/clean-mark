@@ -19,7 +19,7 @@
     "standard": "10.x"
   },
   "engines": {
-    "node": ">=7.10.0"
+    "node": ">7.5.0"
   },
   "keywords": [
     "clearly",

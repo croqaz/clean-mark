@@ -19,7 +19,7 @@ let out = url.parse(link).path
 out = out.split('/').pop()
 out = out.split('.htm')[0]
 
-c.clean(link, out, (err, mark) => {
+c(link, (err, mark) => {
   if (err) return
   fs.writeFileSync(out + '.md', mark)
 })
