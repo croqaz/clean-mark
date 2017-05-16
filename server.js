@@ -1,12 +1,11 @@
 
 const { json } = require('micro')
-const c = require('./lib/clean')
+const clean = require('./lib/clean')
 
 module.exports = async function (req, res) {
   const data = await json(req)
-  // console.log(data)
-  c.clean(data.url, 'test', (err, html) => {
+  clean(data.url, (err, md) => {
     if (err) res.end(err)
-    return res.end(html)
+    return res.end(md)
   })
 }

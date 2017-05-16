@@ -22,6 +22,7 @@
     "node": ">7.5.0"
   },
   "keywords": [
+    "cli",
     "clearly",
     "readability",
     "markdown"
@@ -29,5 +30,9 @@
   "license": "MIT",
   "main": "lib/clean.js",
   "name": "clean-mark",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/croqaz/clean-mark.git"
+  },
   "version": "0.2.1"
 }
