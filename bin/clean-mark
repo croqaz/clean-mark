@@ -3,6 +3,7 @@
 const fs = require('fs')
 const url = require('url')
 const c = require('../')
+const { urlPath } = require('../lib/util')
 
 let link = process.argv[2]
 
@@ -11,15 +12,10 @@ if (!link) {
   process.exit()
 }
 
-if (link.endsWith('/')) {
-  link = link.substr(0, link.length - 1)
-}
-
-let out = url.parse(link).path
-out = out.split('/').pop()
-out = out.split('.htm')[0]
-
-c(link, (err, mark) => {
+console.log('☟  watch dis ...')
+c(link, (err, dict) => {
   if (err) return
-  fs.writeFileSync(out + '.md', mark)
-})
+  text = `---\ntitle: ${dict.title}\nauthor: ${dict.author}\ndate: ${dict.date}\npublisher: ${dict.publisher}\nlink: ${dict.url}\n---\n${dict.text}`
+  fs.writeFileSync(urlPath(link) + '.md', text)
+  console.log('☞  baaam!')
+}).catch(err => console.error(err))

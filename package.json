@@ -10,12 +10,13 @@
     "cheerio": "0.x",
     "chrono-node": "1.x",
     "htmlparser2": "3.x",
-    "micro": "7.x",
     "minimize": "2.x",
     "node-fetch": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
+    "mocha": "3.x",
+    "should": "11.x",
     "standard": "10.x"
   },
   "engines": {
@@ -33,6 +34,9 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/croqaz/clean-mark.git"
+  },
+  "scripts": {
+    "test": "mocha $(find . -name './test/*.test.js')"
   },
   "version": "0.3.0"
 }
