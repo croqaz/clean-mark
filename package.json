@@ -6,8 +6,8 @@
     "clean-mark": "./bin/clean-mark"
   },
   "dependencies": {
-    "breakdance": "2.x",
-    "cheerio": "0.x",
+    "breakdance": "3.x",
+    "cheerio": "^1.0.0-rc.2",
     "chrono-node": "1.x",
     "htmlparser2": "3.x",
     "minimize": "2.x",
@@ -15,12 +15,13 @@
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
+    "expect.js": "0.x",
     "mocha": "3.x",
     "should": "11.x",
     "standard": "10.x"
   },
   "engines": {
-    "node": ">7.5.0"
+    "node": ">8.0.0"
   },
   "keywords": [
     "cli",
