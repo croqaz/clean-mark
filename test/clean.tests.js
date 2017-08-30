@@ -42,16 +42,6 @@ describe('Readability Test suite', function () {
       }).catch(e => done(e))
   })
 
-  it('Article from Abc News', function (done) {
-    clean('http://abcnews.go.com/Technology/wireStory/latest-turkey-countries-hit-cyberattack-47388011')
-    .then(res => {
-      res.text.should.containEql('Cybersecurity officials in Britain have applauded a young researcher for helping')
-      res.text.should.containEql('The European Union\'s police agency, Europol, says')
-      res.text.should.containEql('but there was no impact on train services')
-      done()
-    }).catch(e => done(e))
-  })
-
   it('Article from Yahoo News', function (done) {
     clean('https://www.yahoo.com/news/tomb-drawing-shows-mongoose-leash-142300393.html')
     .then(res => {
