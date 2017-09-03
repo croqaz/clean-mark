@@ -6,6 +6,7 @@
     "clean-mark": "./bin/clean-mark"
   },
   "dependencies": {
+    "a-extractor": "git+https://github.com/croqaz/a-extractor.git",
     "breakdance": "3.x",
     "cheerio": "^1.0.0-rc.2",
     "chrono-node": "1.x",
@@ -21,7 +22,7 @@
     "standard": "10.x"
   },
   "engines": {
-    "node": ">8.0.0"
+    "node": ">6.0.0"
   },
   "keywords": [
     "cli",

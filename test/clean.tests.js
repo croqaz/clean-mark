@@ -3,13 +3,10 @@ const fs = require('fs')
 const clean = require('../lib/clean')
 
 describe('Readability Test suite', function () {
-  // it('should pass', function(done) {
-  //   fs.writeFileSync('temp.md', md)
-  //   done()
-  // })
 
   it('Local html files', function (done) {
     const promises = []
+    process.stdout.write('  ')
     for (const dir of fs.readdirSync('test/fixtures')) {
       if (dir[0] === '.') continue
       const wanted = JSON.parse(fs.readFileSync(`test/fixtures/${dir}/expected.json`, 'utf8'))
@@ -21,11 +18,12 @@ describe('Readability Test suite', function () {
           res.text.should.containEql(m)
         }
       })
+      process.stdout.write('.')
       promises.push(p)
     }
     Promise.all(promises)
       .then(() => {
-        console.log(`  ${promises.length} websites are OK`)
+        console.log(` ${promises.length} local websites are OK\n`)
         done()
       })
       .catch(e => done(e))
