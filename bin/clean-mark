@@ -15,6 +15,8 @@ if (!link) {
 console.log('☟  watch dis ...')
 c(link, true).then(dict => {
   text = `---\ntitle: ${dict.title}\nauthor: ${dict.author}\ndate: ${dict.date}\npublisher: ${dict.publisher}\nlink: ${dict.url}\n---\n${dict.text}`
-  fs.writeFileSync(urlPath(link.replace(/\\/g,'')) + '.md', text)
+  const path = urlPath(link) + '.md'
+  console.log('>', path)
+  fs.writeFileSync(path, text)
   console.log('☞  baaam!')
 }).catch(err => console.error(err))
