@@ -3,6 +3,7 @@
 const fs = require('fs')
 const url = require('url')
 const c = require('../')
+const s = require('../lib/stats')
 const { urlPath } = require('../lib/util')
 
 let link = process.argv[2]
@@ -14,7 +15,8 @@ if (!link) {
 
 console.log('☟  watch dis ...')
 c(link, true).then(dict => {
-  text = `---\ntitle: ${dict.title}\nauthor: ${dict.author}\ndate: ${dict.date}\npublisher: ${dict.publisher}\nlink: ${dict.url}\n---\n${dict.text}`
+  const stat = `paragraph=${s.paragraphCount(dict.text)} sentences=${s.sentenceCount(dict.text)}, words=${s.wordCount(dict.text)}`
+  const text = `---\ntitle: ${dict.title}\nauthor: ${dict.author}\ndate: ${dict.date}\npublisher: ${dict.publisher}\nlink: ${dict.url}\nstats: ${stat}\n---\n${dict.text}`
   const path = urlPath(link) + '.md'
   console.log('>', path)
   fs.writeFileSync(path, text)

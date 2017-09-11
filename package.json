@@ -6,17 +6,17 @@
     "clean-mark": "./bin/clean-mark"
   },
   "dependencies": {
-    "a-extractor": "git+https://github.com/croqaz/a-extractor.git",
+    "a-extractor": "1.x",
     "breakdance": "3.x",
     "cheerio": "^1.0.0-rc.2",
     "chrono-node": "1.x",
     "htmlparser2": "3.x",
     "minimize": "2.x",
-    "node-fetch": "1.x"
+    "node-fetch": "1.x",
+    "string": "3.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
-    "expect.js": "0.x",
     "mocha": "3.x",
     "should": "11.x",
     "standard": "10.x"
@@ -38,7 +38,8 @@
     "url": "git://github.com/croqaz/clean-mark.git"
   },
   "scripts": {
-    "test": "mocha $(find . -name './test/*.test.js')"
+    "lint": "./node_modules/.bin/standard lib/**.js",
+    "test": "./node_modules/.bin/mocha $(find . -name './test/*.test.js')"
   },
   "version": "0.3.2"
 }

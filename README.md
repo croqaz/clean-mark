@@ -12,7 +12,7 @@
 
 Convert an article into a clean Markdown text file.
 
-> node cli.js "http://some-website.com/some-fancy-article"
+> ./bin/clean-mark "http://some-website.com/some-fancy-article"
 
 The article will be automatically named using the URL path name.
 
