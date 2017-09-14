@@ -8,18 +8,21 @@
   <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide"></a>
 </p>
 
-**This tool is in alpha stage**
-
 Convert an article into a clean Markdown text file.
 
 > ./bin/clean-mark "http://some-website.com/some-fancy-article"
 
 The article will be automatically named using the URL path name.
 
+This project depends on the [A-Extractor](https://github.com/croqaz/a-extractor) project, a database of expressions used for extracting content from blogs and articles.
 
-Tested on all major news sites. In rare cases, some text, or links are cut from the article. In this case, you can copy & paste it manually in the resulted text.
 
-There are more problems on Blogspot, Wordpress and other sites, where the HTML from custom themes is badly written.
+Tested on all major news sites. On some websites, the text, or links are cut from the article.
+In this case, you have to manually edit the resulted text,
+
+AND
+
+raise an [issue on A-Extractor](https://github.com/croqaz/a-extractor/issues) with the link that doesn't work and I'll add it in the database, so that next time, the text will be extracted correctly.
 
 My desired goals are:
 
@@ -38,8 +41,8 @@ Implementation steps:
 1. Converts the result into clean Markdown text
 
 
-IDEAS:
+-----
 
-- add text stats like: nr. of words and sections, most used words
-- export to clean HTML
-- export to printable PDF
+Made by :copyright: :registered: :radio_button:
+
+Released under the [MIT license](https://raw.githubusercontent.com/croqaz/a-extractor/master/LICENSE).
