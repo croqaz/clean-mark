@@ -6,7 +6,7 @@
     "clean-mark": "./bin/clean-mark"
   },
   "dependencies": {
-    "a-extractor": "1.x",
+    "a-extractor": "git+https://git@github.com/croqaz/a-extractor.git",
     "breakdance": "3.x",
     "cheerio": "^1.0.0-rc.2",
     "chrono-node": "1.x",
@@ -17,12 +17,12 @@
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
-    "mocha": "3.x",
-    "should": "11.x",
+    "mocha": "4.x",
+    "should": "13.x",
     "standard": "10.x"
   },
   "engines": {
-    "node": ">6.0.0"
+    "node": ">=6.0.0"
   },
   "keywords": [
     "cli",
@@ -41,5 +41,5 @@
     "lint": "./node_modules/.bin/standard lib/**.js",
     "test": "./node_modules/.bin/mocha $(find . -name './test/*.test.js')"
   },
-  "version": "0.4.0"
+  "version": "0.4.1"
 }

@@ -4,7 +4,8 @@
 </h1>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/clean-mark"><img src="https://img.shields.io/npm/v/clean-mark.svg" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/clean-mark"><img src="https://img.shields.io/npm/v/clean-mark.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/clean-mark"><img src="https://img.shields.io/npm/dt/clean-mark.svg" alt="Downloads"></a>
   <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide"></a>
 </p>
 
@@ -43,6 +44,6 @@ Implementation steps:
 
 -----
 
-Made by :copyright: :registered: :radio_button:
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Released under the [MIT license](https://raw.githubusercontent.com/croqaz/a-extractor/master/LICENSE).
+Copyright (c) 2017 Cristi Constantin.
