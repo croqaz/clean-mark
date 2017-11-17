@@ -9,16 +9,40 @@
   <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide"></a>
 </p>
 
-Convert an article into a clean Markdown text file.
+Convert a blog article into a clean Markdown text file.
+
+
+### Example
+
+For example, this article:
+
+[![Original article](article-screen.png)](http://www.techradar.com/news/amd-vs-intel-the-16-core-showdown)
+
+Is converted into this text file:
+
+![Clean text](clean-screen.png)
+
+
+### Installation
+
+Simply install with npm:
+
+> npm install clean-mark
+
+
+### Usage
 
 > ./bin/clean-mark "http://some-website.com/some-fancy-article"
 
-The article will be automatically named using the URL path name.
+The article will be automatically named using the URL path name. In the case, above, it will be `some-fancy-article.md`.
+
 
 This project depends on the [A-Extractor](https://github.com/croqaz/a-extractor) project, a database of expressions used for extracting content from blogs and articles.
 
 
-Tested on all major news sites. On some websites, the text, or links are cut from the article.
+### Help
+
+Clean-mark was tested on all major news sites. On some websites, the text, or links are cut from the article.
 In this case, you have to manually edit the resulted text,
 
 AND
@@ -41,9 +65,8 @@ Implementation steps:
 1. Minifies the disinfected HTML
 1. Converts the result into clean Markdown text
 
-
 -----
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+### License
 
-Copyright (c) 2017 Cristi Constantin.
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT) (c) Cristi Constantin
