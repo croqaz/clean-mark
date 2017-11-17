@@ -6,6 +6,7 @@
     "clean-mark": "./bin/clean-mark"
   },
   "dependencies": {
+    "micro": "latest",
     "a-extractor": "git+https://git@github.com/croqaz/a-extractor.git",
     "breakdance": "3.x",
     "cheerio": "^1.0.0-rc.2",
@@ -38,6 +39,7 @@
     "url": "git://github.com/croqaz/clean-mark.git"
   },
   "scripts": {
+    "start": "micro server.js",
     "lint": "./node_modules/.bin/standard lib/**.js",
     "test": "./node_modules/.bin/mocha $(find . -name './test/*.test.js')"
   },
