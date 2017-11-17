@@ -1,15 +1,10 @@
-<h1 align="center">
-  ➹ Clean-mark
-  <br>
-</h1>
+# ➹ Clean-mark
 
-<p align="center">
-  <a href="https://www.npmjs.com/package/clean-mark"><img src="https://img.shields.io/npm/v/clean-mark.svg" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/clean-mark"><img src="https://img.shields.io/npm/dt/clean-mark.svg" alt="Downloads"></a>
-  <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide"></a>
-</p>
+  > Convert a blog article into a clean Markdown text file.
 
-Convert a blog article into a clean Markdown text file.
+  [![NPM Version][npm-image]][npm-url]
+  [![NPM Downloads][downloads-image]][downloads-url]
+  [![Standard Style Guide][style-image]][style-url]
 
 
 ### Example
@@ -25,19 +20,42 @@ Is converted into this text file:
 
 ### Installation
 
-Simply install with npm:
+Simply install with yarn:
 
-> npm install clean-mark
+> yarn global add clean-mark
+
+Or with npm:
+
+> npm install clean-mark --global
 
 
 ### Usage
 
-> ./bin/clean-mark "http://some-website.com/some-fancy-article"
+> clean-mark "http://some-website.com/some-fancy-article"
 
-The article will be automatically named using the URL path name. In the case, above, it will be `some-fancy-article.md`.
+The article will be automatically named using the URL path name. In the case, above, the name will be `some-fancy-article.md`.
 
 
 This project depends on the [A-Extractor](https://github.com/croqaz/a-extractor) project, a database of expressions used for extracting content from blogs and articles.
+
+
+### Why ?
+
+* to save interesting articles offline, in a highly readable text format
+* Markdown is easy to export into a clean printable document
+* it's easy to read on a tablet, or a Kidle (as it is, or in PDF)
+* for offline text analysis of multiple articles, using machine learning / AI
+
+
+### How ?
+
+Implementation steps:
+
+1. Downloads the content of a web page
+1. Meta-scrape page details (title, author, date, etc)
+1. Sanitizes the ugly HTML
+1. Minifies the disinfected HTML
+1. Converts the result into clean Markdown text
 
 
 ### Help
@@ -57,16 +75,25 @@ My desired goals are:
 1. Extraction speed is not that important
 
 
-Implementation steps:
+### Similar tools
 
-1. Downloads the content of a web page
-1. Meta-scrape page details (title, author, date, etc)
-1. Sanitizes the ugly HTML
-1. Minifies the disinfected HTML
-1. Converts the result into clean Markdown text
+* [Original readability](http://ejucovy.github.io/readability)
+* [Next readability](https://github.com/luin/readability)
+* [Other proiect](https://github.com/olragon/node-readability)
+* [Node read](https://github.com/bndr/node-read)
+* [Mozilla's readability](https://github.com/mozilla/readability)
+* [Python newspaper](https://github.com/codelucas/newspaper)
 
 -----
 
 ### License
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT) (c) Cristi Constantin
+[MIT](LICENSE) (c) 2017 Cristi Constantin
+
+
+[npm-image]: https://img.shields.io/npm/v/clean-mark.svg
+[npm-url]: https://www.npmjs.com/package/clean-mark
+[downloads-image]: https://img.shields.io/npm/dm/clean-mark.svg
+[downloads-url]: https://npmjs.org/package/clean-mark
+[style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
+[style-url]: https://standardjs.com
