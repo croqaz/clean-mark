@@ -6,18 +6,19 @@
     "clean-mark": "./bin/clean-mark"
   },
   "dependencies": {
-    "micro": "latest",
     "a-extractor": "git+https://git@github.com/croqaz/a-extractor.git",
     "breakdance": "3.x",
     "cheerio": "^1.0.0-rc.2",
     "chrono-node": "1.x",
     "htmlparser2": "3.x",
+    "minimist": "1.x",
     "minimize": "2.x",
-    "node-fetch": "1.x",
+    "node-fetch": "^2.0.0-alpha.9",
     "string": "3.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
+    "micro": "9.x",
     "mocha": "4.x",
     "should": "13.x",
     "standard": "10.x"

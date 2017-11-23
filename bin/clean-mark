@@ -1,24 +1,36 @@
 #!/usr/bin/env node
+'use strict'
 
 const fs = require('fs')
-const url = require('url')
 const c = require('../')
 const s = require('../lib/stats')
 const { urlPath } = require('../lib/util')
+const argv = require('minimist')(process.argv.slice(2))
 
-let link = process.argv[2]
-
-if (!link) {
+if (!argv._.length) {
   console.warn(':<  Plz gimme URL')
   process.exit()
 }
 
-console.log('☟  watch dis ...')
-c(link, true).then(dict => {
-  const stat = `paragraph=${s.paragraphCount(dict.text)} sentences=${s.sentenceCount(dict.text)}, words=${s.wordCount(dict.text)}`
-  const text = `---\nlink: ${dict.url}\ntitle: ${dict.title}\ndescription: ${dict.description}\nkeywords: ${dict.keywords}\nauthor: ${dict.author}\ndate: ${dict.date}\npublisher: ${dict.publisher}\nstats: ${stat}\n---\n${dict.text}`
-  const path = urlPath(link) + '.md'
-  console.log('>', path)
-  fs.writeFileSync(path, text)
+(async function main() {
+  let dict
+  const useDb = !argv.nodb
+  const output = argv.o || argv.output
+  console.log('☟  watch dis ...')
+
+  // Cycle all provided URLs
+  for (const link of argv._) {
+    try {
+      dict = await c(link, useDb)
+      const stat = `paragraph=${s.paragraphCount(dict.text)} sentences=${s.sentenceCount(dict.text)}, words=${s.wordCount(dict.text)}`
+      const text = `---\nlink: ${dict.url}\ntitle: ${dict.title}\ndescription: ${dict.description}\nkeywords: ${dict.keywords}\nauthor: ${dict.author}\ndate: ${dict.date}\npublisher: ${dict.publisher}\nstats: ${stat}\n---\n${dict.text}`
+      const path = (output || urlPath(link)) + '.md'
+      console.log('>', path)
+      fs.writeFileSync(path, text)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   console.log('☞  baaam!')
-}).catch(err => console.error(err))
+})()
