@@ -2,10 +2,17 @@
 'use strict'
 
 const fs = require('fs')
+const path = require('path')
 const c = require('../')
 const s = require('../lib/stats')
 const { urlPath } = require('../lib/util')
 const argv = require('minimist')(process.argv.slice(2))
+
+if (argv.help) {
+  const help = fs.readFileSync(path.join(__dirname, 'usage.txt'), 'utf8')
+  console.log(help.trim())
+  process.exit()
+}
 
 if (!argv._.length) {
   console.warn(':<  Plz gimme URL')
