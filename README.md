@@ -18,32 +18,41 @@ Is converted into this text file:
 ![Clean text](clean-screen.png)
 
 
+## Usage
+
+> $ clean-mark "http://some-website.com/fancy-article"
+
+The article will be automatically named using the URL path name. In the case, above, the name will be `some-fancy-article.md`.
+
+The file type can be specified:
+
+> $ clean-mark "http://some-website.com/fancy-article" -t html
+
+The available types are: HTML, TEXT and Markdown.
+
+The output file and path can be also specified:
+
+> $ clean-mark "http://some-website.com/fancy-article" -o /tmp/article
+
+In that case the output will be `/tmp/article.md`. The extension is added automatically.
+
+
 ## Installation
 
 Simply install with yarn:
 
-> yarn global add clean-mark
+> $ yarn global add clean-mark
 
 Or with npm:
 
-> npm install clean-mark --global
-
-
-## Usage
-
-> clean-mark "http://some-website.com/some-fancy-article"
-
-The article will be automatically named using the URL path name. In the case, above, the name will be `some-fancy-article.md`.
-
-
-This project depends on the [A-Extractor](https://github.com/croqaz/a-extractor) project, a database of expressions used for extracting content from blogs and articles.
+> $ npm install clean-mark --global
 
 
 ## Why ?
 
 * to save interesting articles offline, in a highly readable text format
-* Markdown is easy to export into a clean printable document
-* it's easy to read on a tablet, or a Kindle (as it is, or in PDF)
+* it's easy to read on a tablet, or a Kindle (as it is, or exported to PDF)
+* Markdown is easy to export into different formats
 * for offline text analysis of multiple articles, using machine learning / AI
 
 
@@ -56,6 +65,9 @@ Implementation steps:
 1. Sanitizes the ugly HTML
 1. Minifies the disinfected HTML
 1. Converts the result into clean Markdown text
+
+
+This project depends on the [A-Extractor project](https://github.com/croqaz/a-extractor), a database of expressions used for extracting content from blogs and articles.
 
 
 ## Vision

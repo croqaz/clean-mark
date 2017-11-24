@@ -19,19 +19,43 @@ if (!argv._.length) {
   process.exit()
 }
 
-(async function main() {
+function getExtension (type) {
+  if (type === 'text') {
+    return '.txt'
+  } else if (type === 'html') {
+    return '.html'
+  } else {
+    return '.md'
+  }
+}
+
+function getMarker (type) {
+  if (type === 'text') {
+    return ['', '']
+  } else if (type === 'html') {
+    return ['<!--', '-->']
+  } else {
+    return ['---', '---']
+  }
+}
+
+(async function main () {
   let dict
   const useDb = !argv.nodb
+  const type = (argv.t || argv.type || '').toLowerCase()
   const output = argv.o || argv.output
+  const ext = getExtension(type)
+  const mark = getMarker(type)
+
   console.log('☟  watch dis ...')
 
   // Cycle all provided URLs
   for (const link of argv._) {
     try {
-      dict = await c(link, useDb)
+      dict = await c(link, {useDatabase: useDb, fileType: type})
       const stat = `paragraph=${s.paragraphCount(dict.text)} sentences=${s.sentenceCount(dict.text)}, words=${s.wordCount(dict.text)}`
-      const text = `---\nlink: ${dict.url}\ntitle: ${dict.title}\ndescription: ${dict.description}\nkeywords: ${dict.keywords}\nauthor: ${dict.author}\ndate: ${dict.date}\npublisher: ${dict.publisher}\nstats: ${stat}\n---\n${dict.text}`
-      const path = (output || urlPath(link)) + '.md'
+      const text = `${mark[0]}\nlink: ${dict.url}\ntitle: ${dict.title}\ndescription: ${dict.description}\nkeywords: ${dict.keywords}\nauthor: ${dict.author}\ndate: ${dict.date}\npublisher: ${dict.publisher}\nstats: ${stat}\n${mark[1]}\n${dict.text}`
+      const path = (output || urlPath(link)) + ext
       console.log('>', path)
       fs.writeFileSync(path, text)
     } catch (err) {
