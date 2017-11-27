@@ -40,6 +40,16 @@ describe('Readability Test suite', function () {
       }).catch(e => done(e))
   })
 
+  it('Article from TechRadar.com', function (done) {
+    clean('http://www.techradar.com/news/amd-vs-intel-the-16-core-showdown', {fileType: 'text'})
+      .then(res => {
+        res.text.should.containEql('The past few years have seen something of a plateau')
+        res.text.should.containEql('AMD Ryzen Threadripper 1950X')
+        res.text.should.containEql('Intel Core i9-7960X')
+        done()
+      }).catch(e => done(e))
+  })
+
   it('Article from Yahoo News', function (done) {
     clean('https://www.yahoo.com/news/tomb-drawing-shows-mongoose-leash-142300393.html')
     .then(res => {
