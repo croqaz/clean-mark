@@ -14,14 +14,16 @@
     "minimist": "1.x",
     "minimize": "2.x",
     "node-fetch": "^2.0.0-alpha.9",
+    "sanitize-html": "1.16.x",
     "string": "3.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
     "micro": "9.x",
     "mocha": "4.x",
+    "prettier": "1.8.2",
     "should": "13.x",
-    "standard": "10.x"
+    "standard": "10.0.3"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -35,13 +37,24 @@
   "license": "MIT",
   "main": "lib/clean.js",
   "name": "clean-mark",
+  "overrides": [
+    {
+      "files": "lib/*.js",
+      "options": {
+        "printWidth": 120,
+        "semi": false,
+        "singleQuote": true
+      }
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/croqaz/clean-mark.git"
   },
   "scripts": {
-    "start": "micro server.js",
+    "format": "./node_modules/.bin/prettier --write lib/*.js && ./node_modules/.bin/standard --fix lib/**.js",
     "lint": "./node_modules/.bin/standard lib/**.js",
+    "start": "micro server.js",
     "test": "./node_modules/.bin/mocha $(find . -name './test/*.test.js')"
   },
   "version": "0.4.3"

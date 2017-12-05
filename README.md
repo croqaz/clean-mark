@@ -72,19 +72,24 @@ This project depends on the [A-Extractor project](https://github.com/croqaz/a-ex
 
 ## Vision
 
-Clean-mark was tested on all major news sites. On some websites, the text, or links are cut from the article.
-In this case, you have to manually edit the resulted text,
-
-AND
-
-raise an [issue on A-Extractor](https://github.com/croqaz/a-extractor/issues) with the link that doesn't work and I'll add it in the database, so that next time, the text will be extracted correctly.
-
-The desired goals are:
+The goals of the project are are:
 
 1. Good text extraction
 1. More useless text is preferred, instead of cutting from the actual article by mistake
 1. Extracting media (images, videos, audio) is not that important
 1. Extraction speed is not that important
+
+
+## Contributing
+
+Clean-mark was tested on all major news sites. On some websites, the text, or links are cut from the article.
+In this case, you have to manually edit the resulted text,
+
+AND
+
+please raise an [issue on A-Extractor](https://github.com/croqaz/a-extractor/issues) with the link that doesn't work and we'll add it in the database, so that next time, the text will be extracted correctly.
+
+Also, see [how to contribute](CONTRIBUTING.md).
 
 
 ## Similar tools
