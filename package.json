@@ -57,5 +57,5 @@
     "start": "micro server.js",
     "test": "npx mocha $(find . -name './test/*.test.js')"
   },
-  "version": "0.4.3"
+  "version": "0.4.4"
 }
