@@ -1,17 +1,13 @@
-
 const fs = require('fs')
 const url = require('url')
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
-const Minimize = require('minimize')
-const { isUrl } = require('../lib/util')
+const util = require('../lib/util')
 
-let link = process.argv[2]
-
-dl(link)
+dl(process.argv[2])
 
 async function dl (link) {
-  if (!link || !isUrl(link)) {
+  if (!link || !util.isUrl(link)) {
     console.warn(':<  Plz gimme URL')
     return false
   }
@@ -24,13 +20,7 @@ async function dl (link) {
     console.error(`Error fetching: ${err.message}`)
     return
   }
-  const $ = cheerio.load(html)
-  $('script').remove()
-  $('style').remove()
-  $('link').remove()
-  $('iframe').remove()
-  html = $.html()
-  const mini = new Minimize({ quotes: true }).parse(html)
+  const mini = util.minHtml(util.broom(html))
   // Create host path
   const host = url.parse(link).hostname
   fs.mkdirSync(`test/fixtures/${host}`)

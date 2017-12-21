@@ -10,7 +10,6 @@
     "breakdance": "3.x",
     "cheerio": "^1.0.0-rc.2",
     "chrono-node": "1.x",
-    "htmlparser2": "3.x",
     "minimist": "1.x",
     "minimize": "2.x",
     "node-fetch": "^2.0.0-alpha.9",
@@ -21,7 +20,7 @@
   "devDependencies": {
     "micro": "9.x",
     "mocha": "4.x",
-    "prettier": "1.8.2",
+    "prettier": "1.9.2",
     "should": "13.x",
     "standard": "10.0.3"
   },
