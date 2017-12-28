@@ -1,6 +1,6 @@
 
 const { json } = require('micro')
-const clean = require('./lib/clean')
+const clean = require('./')
 
 module.exports = async function (req, res) {
   const data = await json(req)

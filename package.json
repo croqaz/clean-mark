@@ -53,7 +53,7 @@
   "scripts": {
     "format": "npx prettier --write lib/*.js && npx standard --fix lib/**.js",
     "lint": "npx standard lib/**.js",
-    "start": "micro server.js",
+    "start": "npx micro server.js",
     "test": "npx mocha $(find . -name './test/*.test.js')"
   },
   "version": "0.4.4"
