@@ -4,6 +4,7 @@
 
   [![NPM Version][npm-image]][npm-url]
   [![NPM Downloads][downloads-image]][downloads-url]
+  [![Build Status][build-image]][build-url]
   [![Standard Style Guide][style-image]][style-url]
 
 
@@ -39,11 +40,7 @@ In that case the output will be `/tmp/article.md`. The extension is added automa
 
 ## Installation
 
-Simply install with yarn:
-
-> $ yarn global add clean-mark
-
-Or with npm:
+Simply install with npm:
 
 > $ npm install clean-mark --global
 
@@ -114,5 +111,7 @@ Also, see [how to contribute](CONTRIBUTING.md).
 [david-url]: https://david-dm.org/croqaz/clean-mark
 [downloads-image]: https://img.shields.io/npm/dm/clean-mark.svg
 [downloads-url]: https://npmjs.org/package/clean-mark
+[build-image]: https://travis-ci.org/croqaz/clean-mark.svg?branch=master
+[build-url]: https://travis-ci.org/croqaz/clean-mark
 [style-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
 [style-url]: https://standardjs.com
