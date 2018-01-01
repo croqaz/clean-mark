@@ -15,7 +15,7 @@ if (argv.help) {
 }
 
 if (!argv._.length) {
-  console.warn(':<  Plz gimme URL')
+  console.warn('=>  Please provide a URL to convert.')
   process.exit()
 }
 
@@ -47,7 +47,7 @@ function getMarker (type) {
   const ext = getExtension(type)
   const mark = getMarker(type)
 
-  console.log('☟  watch dis ...')
+  console.log('=>  Processing URL ...')
 
   // Cycle all provided URLs
   for (const link of argv._) {
@@ -63,5 +63,5 @@ function getMarker (type) {
     }
   }
 
-  console.log('☞  baaam!')
+  console.log('=>  URL converted!')
 })()

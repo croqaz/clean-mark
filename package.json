@@ -14,7 +14,7 @@
     "minimize": "2.x",
     "node-fetch": "latest",
     "sanitize-html": "1.16.x",
-    "string": "3.x"
+    "voca": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
