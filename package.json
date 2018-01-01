@@ -5,8 +5,11 @@
   "bin": {
     "clean-mark": "./bin/clean-mark"
   },
+  "bugs": {
+    "url": "https://github.com/croqaz/clean-mark/issues"
+  },
   "dependencies": {
-    "a-extractor": "git+https://git@github.com/croqaz/a-extractor.git",
+    "a-extractor": "2.x",
     "breakdance": "3.x",
     "cheerio": "latest",
     "chrono-node": "1.x",
@@ -18,7 +21,7 @@
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
-    "micro": "9.x",
+    "micro": "latest",
     "mocha": "4.x",
     "prettier": "1.9.2",
     "should": "13.x",
