@@ -2,8 +2,14 @@
 const { json } = require('micro')
 const clean = require('./')
 
-module.exports = async function (req, res) {
+async function handler (req, res) {
   const data = await json(req)
-  const md = await clean(data.url)
+  const md = await clean(data.url, { fileType: 'html' })
   return md
 }
+
+const cors = require('micro-cors')({
+  allowMethods: ['POST']
+})
+
+module.exports = cors(handler)

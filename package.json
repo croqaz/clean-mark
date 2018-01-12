@@ -11,17 +11,18 @@
   "dependencies": {
     "a-extractor": "2.x",
     "breakdance": "3.x",
-    "cheerio": "latest",
+    "cheerio": "^1.0.0-rc.2",
     "chrono-node": "1.x",
     "minimist": "1.x",
     "minimize": "2.x",
-    "node-fetch": "latest",
+    "node-fetch": "1.x",
     "sanitize-html": "1.16.x",
     "voca": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
-    "micro": "latest",
+    "micro": "9.x",
+    "micro-cors": "0.x",
     "mocha": "4.x",
     "prettier": "1.9.2",
     "should": "13.x",
