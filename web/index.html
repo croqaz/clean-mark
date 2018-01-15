@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Clean-mark article reader">
+  <meta name="author" content="Clean-mark, Cristi-Constantin">
+  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Open+Sans" rel="stylesheet">
+  <title>Clean-Mark Article Reader</title>
+  <style>
+  body {
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: 'Open Sans', sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    color: #2f2f2f;
+    background-color: #f9f7f1;
+    background-image: linear-gradient(#eee 1px, transparent 1px);
+    background-size: 100% 1em;
+  }
+  .content {
+    position: relative;
+    max-width: 35em;
+    margin: 2em auto;
+  }
+  .content .content-box {
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    padding: 1em;
+    background-color: #fcfcfc;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+  }
+  .content .content-box:before, .content .content-box:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    left: 0;
+    right: 0;
+    clip-path: polygon(0% 0%, 5% 100%, 10% 0%, 15% 100%, 20% 0%, 25% 100%, 30% 0%, 35% 100%, 40% 0%, 45% 100%, 50% 0%, 55% 100%, 60% 0%, 65% 100%, 70% 0%, 75% 100%, 80% 0%, 85% 100%, 90% 0%, 95% 100%, 100% 0%);
+  }
+  .content .content-box:before {
+    background-color: #eee;
+    top: 0;
+  }
+  .content .content-box:after {
+    background-color: #fff;
+    bottom: -2px;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    font-family: 'Alegreya Sans', sans-serif;
+  }
+  /* Aligns to 72px */
+  h1 {
+    font-size: 2.25em;
+    line-height: 1.16666666666;
+    padding-top: 6px;
+    margin-bottom: 24px;
+  }
+  /* Aligns to 72px */
+  h2 {
+    font-size: 1.875em;
+    line-height: 1.2;
+    padding-top: 24px;
+    margin-bottom: 12px;
+  }
+  /* Aligns to 48px */
+  h3 {
+    font-size: 1.5em;
+    line-height: 1.25;
+    padding-top: 12px;
+    margin-bottom: 6px;
+  }
+  /* Aligns to 36px */
+  h4 {
+    font-size: 1.3125em;
+    line-height: 1.3333333;
+    padding-top: 10px;
+    margin-bottom: 10px;
+  }
+  /* Aligns to 36px */
+  h5 {
+    font-size: 1.125em;
+    line-height: 1.5;
+    padding-top: 12px;
+    margin-bottom: 9px;
+  }
+  /* Aligns to 36px */
+  h6 {
+    font-size: 1em;
+    line-height: 1.5;
+    padding-top: 9px;
+    margin-bottom: 3px;
+  }
+  .content-box input {
+    width: 99%;
+    height: 1.5em;
+    margin: 3em 0 1em 0;
+    padding: 0.2em;
+    font-size: 1em;
+    text-indent: 0.2em;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #ccc;
+    transition: border-bottom 500ms;
+  }
+  .content-box input:focus {
+    border-bottom: 1px solid #99f;
+  }
+  #clean-text {
+    padding: 1em 0 1em 0;
+  }
+  #clean-text> pre, #clean-text> code, #clean-text> blockquote {
+    border: 1px solid #eee;
+    overflow: scroll;
+    padding-left: .5em;
+    margin: .5em 0 .5em 0;
+    background-color: #f7f7f7;
+  }
+</style>
+</head>
+<body>
+<article class="content">
+  <div class="content-box">
+    <input id="url-input" class="input" type="text" placeholder="URL ➼">
+    <div id="clean-text"></div>
+  </div>
+</article>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script>
+function makeHtml (data) {
+  return `<h1>${data.title}</h1>
+  <span style="float:left">by ${data.author}</span>
+  <span style="float:right">${data.date}</span>
+  <br><hr><br>
+  ${data.text}`
+}
+function showArticle (data) {
+  // console.log(data)
+  setTimeout(function () {
+    $('#clean-text').html(makeHtml(data))
+  }, 1000)
+}
+$(function () {
+  $('#url-input').keypress(function (ev) {
+    if (ev.which !== 13) { return }
+    var url = this.value
+    $.ajax({
+      method: 'POST',
+      dataType: 'json',
+      url: 'https://clean-mark.now.sh',
+      data: JSON.stringify({ url: url }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      success: showArticle,
+      beforeSend: function() {
+        $('#clean-text').text('...')
+      },
+      error: function(err) {
+        console.error(err)
+        $('#clean-text').val(err.message)
+      }
+    })
+  })
+})
+</script>
+</body>
+</html>
