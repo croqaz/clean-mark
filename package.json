@@ -15,15 +15,16 @@
     "chrono-node": "1.x",
     "minimist": "1.x",
     "minimize": "2.x",
-    "node-fetch": "1.x",
+    "node-fetch": "2.x",
     "sanitize-html": "1.16.x",
+    "snapdragon": "0.11.3",
     "voca": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
     "micro": "9.x",
     "micro-cors": "0.x",
-    "mocha": "4.x",
+    "mocha": "5.x",
     "prettier": "1.9.2",
     "should": "13.x",
     "standard": "10.0.3"
