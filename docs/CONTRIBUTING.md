@@ -5,6 +5,7 @@ make the life easier and will avoid wasting time on things which are not
 requested. :sparkles:
 
 ## Discuss the changes before doing them
+
  - First of all, [open an issue](https://github.com/croqaz/clean-mark/issues)
    in the repository, describing the contribution you would like to make,
    the bug you found or any other ideas you have. This will help us to get
@@ -19,23 +20,17 @@ requested. :sparkles:
    continue and fix it.
 
 ## Fixing issues
+
  - Fork the project in your account and create a branch with your fix:
    `some-great-feature` or `some-issue-fix`.
 
  - Commit your changes in that branch, writing the code following the
-   **code style**. If the project contains tests (generally, the `test`
-   directory), you are encouraged to add a test as well.
+   **code style**. If applicable, you are encouraged to add a test as well
+   (in the `test` directory)
 
- - Since the project contains a `package.json` file, add yourself in
-   the `contributors` array:
-
-   ```json
-   {
-      "contributors": [
-         "Your Name <and@email.address> (http://your.website)"
-      ]
-   }
-   ```
+ - If you want, add yourself in the `package.json`, section `contributors`.
+   Example: "Barney Rubble <b@rubble.com> (http://barnyrubble.tumblr.com/)"
+   Both email and url are optional.
 
 ## Creating a pull request
 
@@ -47,24 +42,26 @@ requested. :sparkles:
    is going on.
 
 ## Wait for feedback
+
 Before accepting your contributions, we will review them. You may get feedback
 about what should be fixed in your modified code. If so, just keep committing
 in your branch and the pull request will be updated automatically.
 
 ## Code style
+
 Instead of wasting time debating what's the best style, we are using automated
 formatting tools. The coding standard is "prettier" + "standard".
 
 * two spaces for indentation-level
 * single quotes for strings
 * no semicolons at the end of statements
-* omit parentheses around a sole arrow function parameter
-* ALWAYS use spaces after list items and method parameters ([1, 2, 3], not [1,2,3]), around operators (x += 1, not x+=1), and around hash arrows
+* etc.
 
-Just run `npm run format` and `npm run lint` before the tests.
+Just run `npm run fmt` and `npm run lint` before running the tests, to have all that fixed automatically.
 
 ## Everyone is happy!
+
 Finally, your contributions will be merged, and everyone will be happy! :smile:
 Contributions are more than welcome!
 
-Thanks!
+Thanks! :heart: :heart: :heart:

@@ -1,0 +1,8 @@
+docs
+.babelrc
+.editorconfig
+.gitignore
+.npmignore
+.npmrc
+.travis.yml
+*.png
