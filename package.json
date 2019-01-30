@@ -18,7 +18,7 @@
     "minimist": "1.x",
     "minimize": "2.x",
     "node-fetch": "2.x",
-    "sanitize-html": "1.16.x",
+    "sanitize-html": "1.20.x",
     "voca": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
