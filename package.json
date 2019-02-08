@@ -26,7 +26,7 @@
     "micro": "9.x",
     "micro-cors": "0.x",
     "mocha": "5.x",
-    "prettier": "1.14.3",
+    "prettier": "1.16.4",
     "should": "13.x",
     "standard": "12.0.1"
   },
