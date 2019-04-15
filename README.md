@@ -23,7 +23,7 @@ Is converted into this text file:
 
 > $ clean-mark "http://some-website.com/fancy-article"
 
-The article will be automatically named using the URL path name. In the case, above, the name will be `some-fancy-article.md`.
+The article will be automatically named using the URL path name. In the case, above, the name will be `fancy-article.md`.
 
 The file type can be specified:
 
