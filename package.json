@@ -23,10 +23,10 @@
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
-    "mocha": "5.x",
-    "prettier": "1.16.4",
+    "mocha": "6.x",
+    "prettier": "1.18.2",
     "should": "13.x",
-    "standard": "12.0.1"
+    "standard": "13.0.0"
   },
   "engines": {
     "node": ">=6.0.0"
