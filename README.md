@@ -96,7 +96,8 @@ Also, see [how to contribute](CONTRIBUTING.md).
 * [Other proiect](https://github.com/olragon/node-readability)
 * [Node read](https://github.com/bndr/node-read)
 * [Mozilla's readability](https://github.com/mozilla/readability)
-* [Python newspaper](https://github.com/codelucas/newspaper)
+* [Lucas Ou-Yang's Newspaper3k](https://github.com/codelucas/newspaper)
+* [Mercury Parser](https://github.com/postlight/mercury-parser)
 
 -----
 
