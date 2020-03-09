@@ -18,15 +18,15 @@
     "minimist": "1.x",
     "minimize": "2.x",
     "node-fetch": "2.x",
-    "sanitize-html": "1.20.x",
+    "sanitize-html": "1.21.x",
     "voca": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
     "mocha": "6.x",
-    "prettier": "1.18.2",
+    "prettier": "1.19.1",
     "should": "13.x",
-    "standard": "13.0.2"
+    "standard": "14.3.1"
   },
   "engines": {
     "node": ">=6.0.0"
