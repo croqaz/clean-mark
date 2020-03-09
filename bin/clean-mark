@@ -45,17 +45,24 @@ function getMarker (type) {
   const useTitle = argv['name-title']
   const type = (argv.t || argv.type || '').toLowerCase()
   const output = argv.o || argv.output
+  const useStdout = argv.stdout
   const ext = getExtension(type)
   const mark = getMarker(type)
 
-  console.log('=>  Processing URL ...')
+  if (!useStdout) {
+    console.log('=>  Processing URL ...')
+  }
 
   // Cycle all provided URLs
   for (const link of argv._) {
     try {
-      dict = await c(link, {useDatabase: useDb, fileType: type})
+      dict = await c(link, { useDatabase: useDb, fileType: type })
       const stat = `paragraph=${s.paragraphCount(dict.text)} sentences=${s.sentenceCount(dict.text)}, words=${s.wordCount(dict.text)}`
       const text = `${mark[0]}\nlink: ${dict.url}\ntitle: ${dict.title}\ndescription: ${dict.description}\nkeywords: ${dict.keywords}\nauthor: ${dict.author}\ndate: ${dict.date}\npublisher: ${dict.publisher}\nstats: ${stat}\n${mark[1]}\n${dict.text}`
+      if (useStdout) {
+        console.log(text.trim())
+        return
+      }
       let path
       if (useTitle) {
         path = dict.title.replace(/[ \t-]+/g, '-') + ext
@@ -69,5 +76,7 @@ function getMarker (type) {
     }
   }
 
-  console.log('=>  URL converted!')
+  if (!useStdout) {
+    console.log('=>  URL converted!')
+  }
 })()
