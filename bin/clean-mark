@@ -96,7 +96,9 @@ function readStream(stream) {
       process.exit(1)
     }
 
-    console.log('=>  Processing STDIN ...')
+    if (!useStdout) {
+      console.log('=>  Processing STDIN ...')
+    }
     stdin.setEncoding('utf8')
     const html = await readStream(stdin)
     try {
@@ -104,6 +106,7 @@ function readStream(stream) {
       const text = formatOutput(dict)
       if (useStdout) {
         console.log(text.trim())
+        return
       }
       const path = dict.title.replace(/[ \t-]+/g, '-') + ext
       console.log('>', path)
