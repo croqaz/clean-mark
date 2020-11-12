@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "a-extractor": "2.x",
-    "breakdance": "3.x",
     "charset": "1.x",
     "cheerio": "1.0.0-rc.3",
     "chrono-node": "1.x",
@@ -19,14 +18,15 @@
     "minimize": "2.x",
     "node-fetch": "2.x",
     "sanitize-html": "1.21.x",
+    "turndown": "7.x",
     "voca": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
     "mocha": "6.x",
-    "prettier": "1.19.1",
+    "prettier": "2.1.2",
     "should": "13.x",
-    "standard": "14.3.1"
+    "standard": "16.0.2"
   },
   "engines": {
     "node": ">=6.0.0"
