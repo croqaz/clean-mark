@@ -3,7 +3,7 @@
 
 const fs = require('fs')
 const path = require('path')
-const c = require('../')
+const clean = require('../')
 const s = require('../lib/stats')
 const { urlPath } = require('../lib/util')
 const argv = require('minimist')(process.argv.slice(2))
@@ -13,11 +13,6 @@ if (argv.help) {
   console.log(help.trim())
   process.exit()
 }
-
-// if (!argv._.length) {
-//   console.warn('=>  Please provide a URL to convert!')
-//   process.exit()
-// }
 
 function getExtension (type) {
   if (type === 'text') {
@@ -71,7 +66,7 @@ function readStream(stream) {
     // Cycle all provided URLs
     for (const link of argv._) {
       try {
-        dict = await c(link, { useDatabase: useDb, fileType: type })
+        dict = await clean(link, { useDatabase: useDb, fileType: type })
         const text = formatOutput(dict)
         if (useStdout) {
           console.log(text.trim())
@@ -102,7 +97,7 @@ function readStream(stream) {
     stdin.setEncoding('utf8')
     const html = await readStream(stdin)
     try {
-      dict = await c(null, { html, fileType: type })
+      dict = await clean(null, { html, fileType: type })
       const text = formatOutput(dict)
       if (useStdout) {
         console.log(text.trim())
