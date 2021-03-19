@@ -36,7 +36,7 @@ function getMarker (type) {
 
 function readStream(stream) {
   return new Promise((resolve, reject) => {
-    let text = ""
+    let text = ''
     stream.on('data', chunk => text += chunk)
     stream.on('end', () => resolve(text))
     stream.on('error', error => reject(error))
@@ -97,7 +97,7 @@ function readStream(stream) {
     stdin.setEncoding('utf8')
     const html = await readStream(stdin)
     try {
-      dict = await clean(null, { html, fileType: type })
+      dict = await clean(null, { html, fileType: type, proc: argv.proc })
       const text = formatOutput(dict)
       if (useStdout) {
         console.log(text.trim())
