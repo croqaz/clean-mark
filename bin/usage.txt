@@ -11,5 +11,6 @@ Options
   -t, --type    Specify output format type
                 (HTML, TEXT, or Markdown by default)
   --name-title  Use the title as output name
+  --no-proc     Don't process the HTML from STDIN
   --nodb        Don't use the A-Extractor database
                 (probably a bad idea)
