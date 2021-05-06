@@ -17,7 +17,7 @@
     "minimist": "1.x",
     "minimize": "2.x",
     "node-fetch": "2.x",
-    "sanitize-html": "1.27.5",
+    "sanitize-html": "2.3.2",
     "turndown": "7.x",
     "voca": "1.x"
   },
