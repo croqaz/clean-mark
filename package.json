@@ -11,20 +11,20 @@
   "dependencies": {
     "a-extractor": "2.x",
     "charset": "1.x",
-    "cheerio": "1.0.0-rc.5",
-    "chrono-node": "1.x",
+    "cheerio": "1.0.0-rc.9",
+    "chrono-node": "2.x",
     "iconv-lite": "0.6.x",
     "minimist": "1.x",
     "minimize": "2.x",
     "node-fetch": "2.x",
-    "sanitize-html": "1.27.5",
+    "sanitize-html": "2.x",
     "turndown": "7.x",
     "voca": "1.x"
   },
   "description": "Convert an article into a clean Markdown",
   "devDependencies": {
     "mocha": "6.x",
-    "prettier": "2.2.1",
+    "prettier": "2.3.0",
     "should": "13.x",
     "standard": "16.0.3"
   },

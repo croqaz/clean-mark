@@ -89,15 +89,25 @@ please raise an [issue on A-Extractor](https://github.com/croqaz/a-extractor/iss
 Also, see [how to contribute](CONTRIBUTING.md).
 
 
-## Similar tools
+## Other readability tools
 
-* [Original readability](http://ejucovy.github.io/readability)
-* [Next readability](https://github.com/luin/readability)
-* [Other proiect](https://github.com/olragon/node-readability)
-* [Node read](https://github.com/bndr/node-read)
-* [Mozilla's readability](https://github.com/mozilla/readability)
-* [Lucas Ou-Yang's Newspaper3k](https://github.com/codelucas/newspaper)
-* [Mercury Parser](https://github.com/postlight/mercury-parser)
+* http://ejucovy.github.io/readability :: Original readability ☠
+* https://github.com/luin/readability :: Next readability ☠
+* https://github.com/olragon/node-readability :: Node.js readability ☠
+* https://github.com/bndr/node-read : Node read ☠
+* https://github.com/mozilla/readability :: Mozilla's readability, up to date
+* https://github.com/codelucas/newspaper :: Lucas Ou-Yang's Newspaper3k
+* https://github.com/postlight/mercury-parser :: Postlight's Mercury Parser
+
+## Web archiving tools
+
+* https://github.com/Y2Z/monolith :: Rust CLI app
+* https://github.com/go-shiori/obelisk :: Go CLI app, inspired by Monolith
+* https://github.com/wabarc/cairn :: TypeScript implementation of Obelisk
+* https://github.com/gildas-lormeau/SingleFile :: Web Extension for Firefox/Chrome/Edge and CLI tool to save a web page in a single HTML file
+
+A massive list of Awesome Web Archiving tools:
+https://github.com/iipc/awesome-web-archiving
 
 -----
 
