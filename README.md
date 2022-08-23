@@ -98,6 +98,7 @@ Also, see [how to contribute](CONTRIBUTING.md).
 * https://github.com/mozilla/readability :: Mozilla's readability, up to date
 * https://github.com/codelucas/newspaper :: Lucas Ou-Yang's Newspaper3k
 * https://github.com/postlight/mercury-parser :: Postlight's Mercury Parser
+* https://github.com/ageitgey/node-unfluff :: Automatically extract body content (and other cool stuff) from HTML document
 
 ## Web archiving tools
 
