@@ -102,13 +102,16 @@ Also, see [how to contribute](CONTRIBUTING.md).
 
 ## Web archiving tools
 
+* https://github.com/croqaz/web-snap :: create "perfect" snapshots of web pages
 * https://github.com/Y2Z/monolith :: Rust CLI app
 * https://github.com/go-shiori/obelisk :: Go CLI app, inspired by Monolith
 * https://github.com/wabarc/cairn :: TypeScript implementation of Obelisk
 * https://github.com/gildas-lormeau/SingleFile :: Web Extension for Firefox/Chrome/Edge and CLI tool to save a web page in a single HTML file
 
-A massive list of Awesome Web Archiving tools:
-https://github.com/iipc/awesome-web-archiving
+More archiving tools:
+
+* https://crlf.link/mem/web-archiving
+* https://github.com/iipc/awesome-web-archiving
 
 -----
 
